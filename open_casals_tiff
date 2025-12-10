@@ -1,0 +1,7 @@
+#
+from PIL import Image
+pan_image = Image.open('../AIST_data_files/Ultris_session_000_315/session_000_315_pan.tiff')
+pan_image.show()
+if False: 
+    cube_image = Image.open('../AIST_data_files/Ultris_session_000_315/session_000_315_cube.tiff')
+    # More samples per pixel than can be decoded: 164
