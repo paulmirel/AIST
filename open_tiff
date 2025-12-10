@@ -1,0 +1,5 @@
+#
+from PIL import Image
+print( "import maybe worked" )
+image = Image.open('test_pattern.tif')
+image.show()
