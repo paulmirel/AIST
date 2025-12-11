@@ -7,6 +7,13 @@ cube_filename = '../AIST_data_files/Ultris_session_000_315/session_000_315_cube.
 data_cube_array = imread(cube_filename)
 print(data_cube_array.shape)
 print(data_cube_array.dtype)
-print(data_cube_array.strides)
-print(data_cube_array.data)
+
+#print(data_cube_array[0][0][0])
+#print(len(data_cube_array[0][0]))
+
+
+#two_d_array = numpy.vsplit(data_cube_array,1)
+#print(two_d_array.shape)
+
+print(numpy.histogram(data_cube_array))
 

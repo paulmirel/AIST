@@ -1,0 +1,4 @@
+# take test array
+# break it into layers
+# apply "calibration" to each layer, perhaps divide brightness by radius
+# make a series of images? Show in matplotlib? 
