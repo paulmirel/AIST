@@ -2,3 +2,14 @@
 # break it into layers
 # apply "calibration" to each layer, perhaps divide brightness by radius
 # make a series of images? Show in matplotlib? 
+
+import numpy as np
+
+arrays = []
+for index in range (0, 10):
+    arrays.append(np.full(shape=(40,40),fill_value=index))
+    #print( arrays[index])
+
+# stack
+three_d_array = np.stack( arrays, axis = 2 ) 
+print(three_d_array.shape)
