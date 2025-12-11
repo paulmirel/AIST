@@ -2,11 +2,14 @@
 import numpy
 from tifffile import imread
 
+print( numpy.__version__)
+
 
 cube_filename = '../AIST_data_files/Ultris_session_000_315/session_000_315_cube.tiff'
 data_cube_array = imread(cube_filename)
 print(data_cube_array.shape)
 print(data_cube_array.dtype)
-print(data_cube_array.strides)
-print(data_cube_array.data)
 
+if False: 
+    arrays_tuple = numpy.unstack(data_cube_array, axis = 2)
+    print( arrays_tuple[0].shape)

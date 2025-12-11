@@ -3,11 +3,19 @@
 # iterate, make ten of these filled with the index number
 # stack 'em together into a 3D array
 import numpy as np
+
+print(np.__version__)
+
 print("test")
 arrays = []
 for index in range (0, 10):
     arrays.append(np.full(shape=(3,3),fill_value=index))
     #print( arrays[index])
 
+# stack
 three_d_array = np.stack( arrays, axis = 2 ) 
 print(three_d_array.shape)
+
+# unstack
+new_arrays_tuple = np.unstack(three_d_array, axis = 2)
+print( new_arrays_tuple[0].shape) 
