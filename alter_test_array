@@ -10,6 +10,19 @@ for index in range (0, 10):
     arrays.append(np.full(shape=(40,40),fill_value=index))
     #print( arrays[index])
 
-# stack
+# stack up to make a test array like a .tif
 three_d_array = np.stack( arrays, axis = 2 ) 
-print(three_d_array.shape)
+x_count, y_count, z_count = three_d_array.shape
+#print( x_count )
+
+# unstack 
+new_arrays_tuple = np.unstack(three_d_array, axis = 2)
+#print( new_arrays_tuple[0].shape) 
+
+x_center = x_count * 0.51832
+y_center = y_count * 0.49568
+
+print( x_center, y_center)
+
+#generate a radium from center for each pixel, store it in a companion 2D array. 
+#divide each layer array by the companion array
