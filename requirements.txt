@@ -1,4 +1,4 @@
 
 pillow
-numpy>=2.3
+numpy>=2.1
 tifffile
