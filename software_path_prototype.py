@@ -1,27 +1,25 @@
 #software path prototype
 
-import numpy
-from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
 
-random_array = numpy.random.rand(40, 40, 10)
-
-binary_image_array = numpy. dtype=np.uint32)
-print(nonzero_random_array.dtype)
+ar1 = np.random.rand(410, 410, 10)
+ar2 = np.empty_like(ar1)
 
 def make_nonzero( value ): 
-    return bin(int(65535^2*(value+0.1)/10))
+    return (value+0.1)/10
 
-x_count, y_count, z_count = random_array.shape
+x_count, y_count, z_count = ar1.shape
 for n in range (0, z_count):
     for x in range(0, x_count):
 	    for y in range (0,y_count):
-		    nonzero_random_array[x, y, n] = make_nonzero(random_array[ x, y, n])
+		    ar2[x, y, n] = make_nonzero(ar1[ x, y, n])
 
-image_arrays = numpy.unstack( nonzero_random_array, axis = 2 )
-print(image_arrays[0])
+ars = np.unstack( ar2, axis = 2) 
 
+r = SQRT((xn - x’)^2 + (yn - y’)^2 ) 
 
-if False: 
-    images = []
-    for n in range (0, z_count): 
-        images.append(Image.open(image_arrays[n]))
+plt.imshow(ars[0], cmap='gray')
+plt.colorbar()
+plt.show()
+
