@@ -5,10 +5,11 @@ from PIL import Image
 
 random_array = numpy.random.rand(40, 40, 10)
 
-nonzero_random_array = numpy.empty_like(random_array)
+binary_image_array = numpy. dtype=np.uint32)
+print(nonzero_random_array.dtype)
 
 def make_nonzero( value ): 
-    return bin(int(65535*(value+0.1)/10))
+    return bin(int(65535^2*(value+0.1)/10))
 
 x_count, y_count, z_count = random_array.shape
 for n in range (0, z_count):

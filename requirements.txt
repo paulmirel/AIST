@@ -2,3 +2,4 @@
 pillow
 numpy>=2.1
 tifffile
+matplotlib
