@@ -23,7 +23,7 @@ def get_r( x, y ):
     y_center = 208
     return math.sqrt((x - x_center)**2 + (y - y_center)**2 ) 
 
-if False: 
+if True: 
     plt.imshow(ars[0], cmap='gray')
     plt.colorbar()
     plt.show()
