@@ -1,5 +1,5 @@
 import numpy as np
-from tifffile import imread
+from tifffile import imread, imwrite
 import matplotlib.pyplot as plt
 from matplotlib import colormaps
 import csv
@@ -65,6 +65,27 @@ for index in range (0, len(one_array_per_band)):
 #print( type( center_average_values[80])) # <class 'numpy.float64'> which is a double precision float
 
 # correction = reference value/pixel_cal_value
-flat_field_correction_cube = np.zeros_like(data_cube_array,dtype=float64)
+flat_field_correction_cube_blank = np.zeros_like(data_cube_array,dtype=np.float64)
+one_correction_array_per_band = np.unstack(flat_field_correction_cube_blank, axis = 2)
+
+for index in range (0, len(one_array_per_band)): 
+    for x in range (0, pixel_count): 
+        for y in range (0, pixel_count): 
+            cal_pixel_value = one_array_per_band[index][x][y]
+            if cal_pixel_value > 0: 
+                one_correction_array_per_band[index][x][y] = center_average_values[index]/ cal_pixel_value
+            else: 
+                one_correction_array_per_band[index][x][y] = 0
+
+flat_field_correction_cube = np.stack(one_correction_array_per_band, axis = 2)
+print(flat_field_correction_cube.shape)
+#filename = '../AIST_data_files/flat_field_correction_cube.txt'
+#flat_field_correction_cube.tofile(filename, sep=" ",format="%s")
+filename = '../AIST_data_files/flat_field_correction_cube'
+try: 
+    np.save(filename, flat_field_correction_cube)
+    print("flat_field_correction_cube file saved")
+except Exception as err: 
+    print("file not saved because ", err)
 
 
