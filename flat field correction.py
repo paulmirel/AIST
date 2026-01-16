@@ -61,3 +61,10 @@ for index in range (0, len(one_array_per_band)):
 
 for index in range (0, len(one_array_per_band)): 
     print(wavelengths_nm[index],center_average_values[index])
+
+#print( type( center_average_values[80])) # <class 'numpy.float64'> which is a double precision float
+
+# correction = reference value/pixel_cal_value
+flat_field_correction_cube = np.zeros_like(data_cube_array,dtype=float64)
+
+
