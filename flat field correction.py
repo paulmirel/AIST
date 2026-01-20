@@ -75,15 +75,15 @@ for index in range (0, len(one_array_per_band)):
             if cal_pixel_value > 0: 
                 one_correction_array_per_band[index][x][y] = center_average_values[index]/ cal_pixel_value
             else: 
-                one_correction_array_per_band[index][x][y] = 0
+                one_correction_array_per_band[index][x][y] = 0 #hmmm I think this needs to be either 1 or center_average_values
 
 flat_field_correction_cube = np.stack(one_correction_array_per_band, axis = 2)
 print(flat_field_correction_cube.shape)
-#filename = '../AIST_data_files/flat_field_correction_cube.txt'
+#filepath = '../AIST_data_files/flat_field_correction_cube.txt'
 #flat_field_correction_cube.tofile(filename, sep=" ",format="%s")
-filename = '../AIST_data_files/flat_field_correction_cube'
+filepath = '../AIST_data_files/flat_field_correction_cube'
 try: 
-    np.save(filename, flat_field_correction_cube)
+    np.save(filepath, flat_field_correction_cube)
     print("flat_field_correction_cube file saved")
 except Exception as err: 
     print("file not saved because ", err)
