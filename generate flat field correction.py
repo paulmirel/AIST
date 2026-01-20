@@ -75,7 +75,7 @@ for index in range (0, len(one_array_per_band)):
             if cal_pixel_value > 0: 
                 one_correction_array_per_band[index][x][y] = center_average_values[index]/ cal_pixel_value
             else: 
-                one_correction_array_per_band[index][x][y] = 0 #hmmm I think this needs to be either 1 or center_average_values
+                one_correction_array_per_band[index][x][y] = 1 #hmmm I think this needs to be either 1 or center_average_values
 
 flat_field_correction_cube = np.stack(one_correction_array_per_band, axis = 2)
 print(flat_field_correction_cube.shape)
