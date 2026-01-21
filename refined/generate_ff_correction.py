@@ -26,6 +26,7 @@ def main():
     center_pixels_radius = 20 
     xy_pixel_count = 410
     center_address = xy_pixel_count/2
+    expected_count = int(3.14*center_pixels_radius**2)
 
     center_spot_average_per_band = []
     for z in range (0, z_count): 
@@ -33,13 +34,12 @@ def main():
         spot_values = []
         for x in range(0, x_count):
             for y in range(0, y_count):
-                #if x**2 + y**2 <= center_pixels_radius**2: #from the corner!!
                 if (x-center_address)**2 + (y-center_address)**2 <= center_pixels_radius**2:
                     center_pixels_count+=1
                     value = input_cube[x][y][z]
                     spot_values.append( value )
         spot_average_value = np.average(spot_values)
-        print("band",z,"average value =", int(round(spot_average_value,0)))
+        print("band",z,"average value =", int(round(spot_average_value,0)), " Counted", center_pixels_count, "pixels, expected", expected_count)
         center_spot_average_per_band.append(spot_average_value)
 
 
