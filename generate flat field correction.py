@@ -3,6 +3,7 @@ from tifffile import imread, imwrite
 import matplotlib.pyplot as plt
 from matplotlib import colormaps
 import csv
+from pathlib import Path
 
 
 cube_filename = '../AIST_data_files/paul_use_these_CASALS_calibration/P7INT_3LAMPS/sessionCAL_000_034_snapshot_cube.tiff'
@@ -88,4 +89,12 @@ try:
 except Exception as err: 
     print("file not saved because ", err)
 
+output_folder = "'../AIST_data_files/flat_field_correction_images"
 
+data_array = np.random.rand(63, 4, 4, 3)
+
+for index, array in enumerate(data_array):
+    fig = plt.figure()
+    plt.imshow(array, interpolation="nearest", cmap="viridis")
+    fig.savefig(Path(output_folder, f"close_{index}.png"))
+    plt.close()

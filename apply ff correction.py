@@ -6,13 +6,14 @@ from PIL import Image
 import time
 import csv
 
+
 filepath = '../AIST_data_files/flat_field_correction_cube.npy'
 ff_correction_cube = np.load(filepath)
 print( ff_correction_cube.shape)
 print( ff_correction_cube.dtype)
 
-#cube_filepath = '../AIST_data_files/paul_use_these_CASALS_calibration/P7INT_3LAMPS/sessionCAL_000_034_snapshot_cube.tiff'
-cube_filepath = '../AIST_data_files/paul_use_these_CASALS_calibration/P5INT_3LAMPS/sessionCAL_000_035_snapshot_cube.tiff'
+cube_filepath = '../AIST_data_files/paul_use_these_CASALS_calibration/P7INT_3LAMPS/sessionCAL_000_034_snapshot_cube.tiff'
+#cube_filepath = '../AIST_data_files/paul_use_these_CASALS_calibration/P5INT_3LAMPS/sessionCAL_000_035_snapshot_cube.tiff'
 data_cube_array = imread(cube_filepath)
 x_count, y_count, z_count = data_cube_array.shape
 print(z_count)
@@ -51,8 +52,19 @@ for index in range (0, len(one_array_per_band)):
     plt.colorbar()
     plt.figure(1)
     plt.show()
-    plt.pause(1)
-    plt.clf()
+    #plt.pause(1)
+    #plt.clf()
+    time.sleep(2)
+    plt.close()
+
+
+
+
+
+
+
+
+
 if False: 
     filepath = '../AIST_data_files/P7INT_3LAMPS_sessionCAL_000_034_ffcorrected_cube.tiff'
     try: 
