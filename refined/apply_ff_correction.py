@@ -14,7 +14,7 @@ def main():
     print( ff_correction_cube.shape)
     print( ff_correction_cube.dtype)
     
-    self_check = True
+    self_check = False #True
     if self_check: 
         input_folder = '../AIST_data_files/paul_use_these_CASALS_calibration/P7INT_3LAMPS/'
         input_filename = 'sessionCAL_000_034_snapshot_cube.tiff'
@@ -81,7 +81,9 @@ def main():
     # go on to generate witness images, at least one, for band 50 = 550nm
     band = 50
     arrays_2d = np.unstack( data_ff_corrected, axis = 2) 
-    plt.title('Wavelength {}'.format(wavelengths_nm[band]))
+    deviation = round(np.std(arrays_2d[band]),1)
+    average_value = round(np.average(arrays_2d[band]),1)
+    plt.title('{}nm, value = {}+/-{}'.format(wavelengths_nm[band], average_value, deviation))
     plt.imshow(arrays_2d[band], cmap='gray')
     plt.colorbar()
     plt.show()
