@@ -39,7 +39,7 @@ def main():
                     value = input_cube[x][y][z]
                     spot_values.append( value )
         spot_average_value = np.average(spot_values)
-        print("band",z,"average value =", int(round(spot_average_value,0)), " Counted", center_pixels_count, "pixels, expected", expected_count)
+        print("band",z,":",wavelengths_nm[z],"nm","  spot value =", int(round(spot_average_value,0)), " Counted", center_pixels_count, "pixels, expected", expected_count)
         center_spot_average_per_band.append(spot_average_value)
 
 
