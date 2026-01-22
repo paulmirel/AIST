@@ -4,6 +4,8 @@ from tifffile import imread
 from PIL import Image
 import csv
 import time
+import matplotlib.pyplot as plt
+from matplotlib import colormaps
 
 def main(): 
     calibration_source_folder = '../AIST_data_files/'
@@ -12,7 +14,7 @@ def main():
     print( ff_correction_cube.shape)
     print( ff_correction_cube.dtype)
     
-    self_check = False#True
+    self_check = True
     if self_check: 
         input_folder = '../AIST_data_files/paul_use_these_CASALS_calibration/P7INT_3LAMPS/'
         input_filename = 'sessionCAL_000_034_snapshot_cube.tiff'
@@ -76,7 +78,13 @@ def main():
         except Exception as err: 
             print("failed to save because:", err)
 
-    # go on to generate witness images, at least one, for band 51 = 550nm
+    # go on to generate witness images, at least one, for band 50 = 550nm
+    band = 50
+    arrays_2d = np.unstack( data_ff_corrected, axis = 2) 
+    plt.title('Wavelength {}'.format(wavelengths_nm[band]))
+    plt.imshow(arrays_2d[band], cmap='gray')
+    plt.colorbar()
+    plt.show()
 
 
 def get_wavelength_list(): 
