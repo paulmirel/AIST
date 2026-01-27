@@ -7,14 +7,6 @@ from matplotlib import colormaps
 
 def main(): 
     wavelengths_nm = get_wavelength_list()
-    if False: 
-        self_check = True
-        if self_check: 
-            input_folder = '../AIST_data_files/paul_use_these_CASALS_calibration/P7INT_3LAMPS/'
-            input_filename = 'sessionCAL_000_034_snapshot_cube.tiff'
-        else: 
-            input_folder = '../AIST_data_files/paul_use_these_CASALS_calibration/P5INT_3LAMPS/'
-            input_filename = 'sessionCAL_000_035_snapshot_cube.tiff'
     
     input_folder = '../AIST_data_files/paul_use_these_CASALS_calibration/2026_January_PreBuffalo-AIST-Wavelength+Scene-Data/Argon Lamp/20260122_Argon_000/'
     input_filename = '20260122_Argon_000_008_snapshot_cube.tiff'
@@ -22,12 +14,17 @@ def main():
     input_cube = imread(Path(input_folder, input_filename))
     x_count, y_count, z_count = input_cube.shape
 
-    # go on to generate witness images, at least one, for band 50 = 550nm
-    #band = 50
     arrays_2d = np.unstack( input_cube, axis = 2) 
-    for band in range (0, len(wavelengths_nm)):
-        deviation = round(np.std(arrays_2d[band]),1)
-        average_value = round(np.average(arrays_2d[band]),1)
+    data_to_plot = []
+    for band in range (0, z_count):
+        brightest_value = np.max(arrays_2d[band])
+        data_to_plot.append( (wavelengths_nm[band], brightest_value) )
+    print(data_to_plot)
+
+    plt.plot(data_to_plot)
+    plt.show()
+
+    if False: 
         plt.title('{}nm, value = {}+/-{}'.format(wavelengths_nm[band], average_value, deviation))
         plt.imshow(arrays_2d[band], cmap='gray')
         plt.colorbar()
